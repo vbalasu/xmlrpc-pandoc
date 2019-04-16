@@ -53,8 +53,7 @@
     </div>
      <div class="row mt-2">
         <label for="markdown">Markdown:</label>
-        <textarea class="form-control" rows="9" id="markdown" style="min-width: 100%"># Heading
-Body text</textarea>
+        <textarea class="form-control" rows="9" id="markdown" style="min-width: 100%"></textarea>
         <div class="btn-toolbar">
           <div class="m-auto">Output:</div>
           <button type="button" class="btn btn-primary m-2" id="html">HTML</button>
@@ -68,8 +67,10 @@ Body text</textarea>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="json_to_file.js"></script>
+  <script src="md_example.js"></script>
   <script>
     $(function() {
+      $('#markdown').text(md_example)
       $('#html').click('html', clickHandler)
       $('#docx').click('docx', clickHandler)
       $('#epub').click('epub', clickHandler)
