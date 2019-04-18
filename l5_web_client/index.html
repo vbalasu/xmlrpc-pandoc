@@ -53,7 +53,7 @@
     </div>
      <div class="row mt-2">
         <label for="markdown">Markdown:</label>
-        <textarea class="form-control" rows="9" id="markdown" style="min-width: 100%"></textarea>
+        <textarea class="form-control" rows="9" id="markdown" style="min-width: 100%; font-family:monospace;"></textarea>
         <div class="btn-toolbar">
           <div class="m-auto">Output:</div>
           <button type="button" class="btn btn-primary m-2" id="html">HTML</button>
@@ -69,12 +69,19 @@
   <script src="json_to_file.js"></script>
   <script src="md_example.js"></script>
   <script>
-    $(function() {
+
+    $(document).ready(function() {
       $('#markdown').text(md_example)
       $('#html').click('html', clickHandler)
       $('#docx').click('docx', clickHandler)
       $('#epub').click('epub', clickHandler)
        })
+
+    function clickHandler(convert_to) {
+      contents = $('#markdown').text()
+      convert(contents, convert_to.data)
+      }
+
     function convert(data, convert_to) {
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = false;
@@ -89,11 +96,9 @@
         xhr.setRequestHeader("Accept", "application/octet-stream");
         xhr.send(data);
     }
-    function clickHandler(convert_to) {
-      contents = $('#markdown').text()
-      convert(contents, convert_to.data)
-      }
-   function handleFiles(files) {
+
+    //Browse to select input file 
+    function handleFiles(files) {
      myFiles = files
      basename = files[0].name.split('.').slice(0, -1).join('.')
       var reader = new FileReader();
@@ -103,8 +108,7 @@
       }
       reader.readAsText(files[0]);
     }
+
   </script>
-
 </body>
-
 </html>
