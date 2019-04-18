@@ -1,0 +1,1 @@
+The temp folder is used by l2_subprocess.py to store intermediate outputs
